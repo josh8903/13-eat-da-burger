@@ -9,6 +9,7 @@ var orm = {
         connection.query(queryString, function(err, result) {
             if (err) throw err;
             console.log(result);
+            cb(result);
         });
     },
     insertOne: function(burgerName, devoured) {
@@ -17,6 +18,7 @@ var orm = {
         connection.query(queryString, burgerName, devoured, function(err, result) {
             if (err) throw err;
             console.log(result);
+            cb(result);
         });
     },
     updateOne: function(devoured, condition) {
@@ -25,7 +27,9 @@ var orm = {
         connection.query(queryString, [devoured], function(err, result) {
             if (err) throw err;
             console.log(result);
+            cb(result);
         });
+
     }
 };
 
