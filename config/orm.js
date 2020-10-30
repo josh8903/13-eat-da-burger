@@ -4,7 +4,7 @@ var connection = require("./connection.js");
 // The ? signs are for swapping out other values
 
 var orm = {
-    selectAll: function() {
+    selectAll: function(cb) {
         var queryString = "SELECT * FROM burgers";
         connection.query(queryString, function(err, result) {
             if (err) throw err;
