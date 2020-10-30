@@ -19,9 +19,10 @@ var orm = {
             console.log(result);
         });
     },
-    updateOne: function(tableInput, colToSearch, valOfCol) {
-        var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-        connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
+    updateOne: function(devoured, condition) {
+        var queryString = "UPDATE burgers SET (devoured) VALUES (?) WHERE ";
+        quertString += condition;
+        connection.query(queryString, [devoured], function(err, result) {
             if (err) throw err;
             console.log(result);
         });
