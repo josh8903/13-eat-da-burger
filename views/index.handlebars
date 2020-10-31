@@ -1,8 +1,33 @@
+		<img src="/assets/img/burger.jpg">
+		<h1>Eat-da-burger!</h1>
+		<form id="addForm">
+		<div class="input-group mb-3">
+  			<input id="addFormData" type="text" class="form-control" placeholder="Enter a burger here!" aria-label="Enter a burger here!" aria-describedby="button-addon2">
+  			<div class="input-group-append">
+   		 		<button class="btn btn-outline-secondary" type="submit" id="addFormButton">Add Burger!</button>
+  			</div>
+		</div>
+    </form>
+<h2>Burgers that are not devoured!</h2>
+
 <ul>
   {{#each burgers}}
-    <li>
-      <p>Type: {{burger_name}}</p>
-      <p>Ateit: {{devoured}}</p>
-    </li>
+    {{#unless devoured}}
+      <p>
+        {{burger_name}}
+        ({{devoured}})
+        <button class="btn btn-outline-secondary" type="submit" id="devour" data-id="{{id}}" data-devoured={{devoured}}>Devour!</button>
+      </p>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Burgers that are devoured!</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+      <p>{{burger_name}}({{devoured}})devoured</p>
+    {{/if}}
   {{/each}}
 </ul>
