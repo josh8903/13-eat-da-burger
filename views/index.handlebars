@@ -1,33 +1,56 @@
-		<img src="/assets/img/burger.jpg">
-		<h1>Eat-da-burger!</h1>
-		<form id="addForm">
-		<div class="input-group mb-3">
-  			<input id="addFormData" type="text" class="form-control" placeholder="Enter a burger here!" aria-label="Enter a burger here!" aria-describedby="button-addon2">
-  			<div class="input-group-append">
-   		 		<button class="btn btn-outline-secondary" type="submit" id="addFormButton">Add Burger!</button>
-  			</div>
-		</div>
-    </form>
-<h2>Burgers that are not devoured!</h2>
+<div id="indexContainer">
+    <div class="columns" id="index">
+        <div class="column">
+          <img src="/assets/img/burger1.png">
+          <br>
+          <sectiion id="companyName">EAT-DA-BURGER!</sectiion>
+          <br>
+          <form id="addForm">
+            <div class="field has-addons">
+              <div class="control is-expanded">
+                <input id="addFormData" class="input is-rounded is-primary" type="text" placeholder="Add a new burger!" required>
+              </div>
+              <div class="control">
+                <button id="addFormButton" class="button is-rounded is-primary" type="submit" >Go!</button>
+              </div>
+            </div>
+          </form>
 
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      <p>
-        {{burger_name}}
-        ({{devoured}})
-        <button class="btn btn-outline-secondary" type="submit" id="devour" data-id="{{id}}" data-devoured={{devoured}}>Devour!</button>
-      </p>
-    {{/unless}}
-  {{/each}}
-</ul>
 
-<h2>Burgers that are devoured!</h2>
+          <div class="columns burgerList">
+            <div class="column">
+              <b>!DEVOURED</b>
+              <ul>
+                {{#each burgers}}
+                  {{#unless devoured}}
+                    <p>
+                      {{burger_name}}
+                      <button class="button is-small is-rounded is-info devour" type="submit" data-id="{{id}}" data-devoured={{devoured}}>Devour!</button>
+                    </p>
+                  {{/unless}}
+                {{/each}}
+              </ul>
+            </div>
+            <div class="column">
+              <b>DEVOURED!</b>
+                <ul>
+                  {{#each burgers}}
+                    {{#if devoured}}
+                      <p>
+                        {{burger_name}}
+                        <button class="button is-small is-rounded is-danger deleteBurger" type="submit" data-id="{{id}}">Delete!</button>
+                      </p>
+                    {{/if}}
+                  {{/each}}
+                </ul>
+            </div>
+          </div>
 
-<ul>
-  {{#each burgers}}
-    {{#if devoured}}
-      <p>{{burger_name}}({{devoured}})devoured</p>
-    {{/if}}
-  {{/each}}
-</ul>
+
+
+
+
+        </div>
+    </div>
+</div>
+
